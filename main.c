@@ -1,44 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct matriz {
-    int linhas;
-    int colunas;
-    int m;
-};
-
-void main()
+void matrixvalues()
 {
 
-    //Declaraçao de Variaveis
-    int i, j, qtm, cont, op; // i: Linha; j: Coluna; qtm: Quantidade de Matrizes; cont: Contador; op: opçao
+    //Declaration of variables
+    int i, j; // i: Line; j: Column;
     int lines, columns;
-    struct matriz matriz;
 
-    printf("Digite a quantidade de Matrizes: \n");
-    scanf("%d", &qtm);
-
-    //Repete o processo para cada Matriz
-    for(cont = 0; cont < qtm; cont++){
-
-    printf("%dª Matriz, ", cont + 1);
-
-    //Definindo o tipo de Matriz
+    //Defining the Matrix type
     printf("Digite a quantidade de linhas: \n");
     scanf("%d", &lines);
     printf("Digite a quantidade de Colunas: \n");
     scanf("%d", &columns);
 
-    int matrix [lines] [columns];
-    matriz.m = matrix;
+    int matrix [lines] [columns]; //Matrix vector declaration
 
-    //int matrix [cont] [lines] [columns]; //Declaraçao do vetor Matrix. O primeiro vetor serve para definir a Matriz
-
-    struct matriz vetor[qtm];
-    //Mostrando o tipo de Matriz
-    printf("Matriz do tipo: %dx%d \n", matriz.linhas, matriz.colunas);
-    for(i = 1; i <= matriz.linhas; i++){
-        for(j = 1; j <= matriz.colunas; j++){
+    //Showing the type of Matrix
+    printf("Matriz do tipo: %dx%d \n", lines, columns);
+    for(i = 1; i <= lines; i++){
+        for(j = 1; j <= columns; j++){
 
             printf("a%d%d ", i, j);
 
@@ -46,46 +27,64 @@ void main()
         printf("\n");
     }
 
-    //Atribuindo os valores da Matriz
+    //Assigning the Matrix values
     printf("Digite os valores de: \n");
-    for(i = 0; i < matriz.linhas; i++){
-        for(j = 0; j < matriz.colunas; j++){
+    for(i = 0; i < lines; i++){
+        for(j = 0; j < columns; j++){
 
             printf("a%d%d ", i + 1, j + 1);
-            scanf("%d", &matriz.m [i] [j]);
+            scanf("%d", &matrix [i] [j]);
 
         }
     }
-    vetor[cont] = matriz;
+
     printf("\n");
 
-    //Mostrando os valores da Matriz
-    int x;
-    for (x = 0; x < qtm; x++) {
-        matriz m = vetor[x];
-        for(i = 0; i < m.linhas; i++){
-            for(j = 0; j < m.colunas; j++){
+    //Displaying the Matrix values
+    for(i = 0; i < lines; i++){
+        for(j = 0; j < columns; j++){
 
-                printf("%d ", m [i] [j]);
+                printf("%4d",matrix [i] [j]);
 
-            }
-            printf("\n");
         }
+            printf("\n");
     }
 
+}
 
+void main()
+{
 
+    //Declaration of variables
+    int op, end; //op: option
 
+    printf("\n***CALCULOS DE MATRIZES*** \n \n");
 
-    }
+    do{
 
-   /* printf("Escolha a operaçao: \n 1 - Adiçao \n");
-    scanf("%d", op);
+        printf("Digite 1 para calculos com uma Matriz apenas \nou 2 para calculos com duas Matrizes \n");
+        scanf("%d", &op);
 
-    if(op = 1){
+        switch(op){
 
+            case 1:
+            printf("teste 1 \n");
+            break;
 
+            matrixvalues();
 
-    } */
+            case 2:
+            printf("teste 2 \n");
+            break;
+
+            default:
+            printf("Opçao invalida.\n");
+
+        }
+
+        printf("Digite 1 para continuar ou digite qualquer outro para sair: \n");
+        scanf("%d", &end);
+
+    }while (end == 1);
 
 }
