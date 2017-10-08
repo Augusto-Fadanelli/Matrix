@@ -1,8 +1,98 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void mTransposed(int lines, int columns, int matrix [] [columns])
+{
+
+    int i, j;
+
+    for (int i = 0; i < columns; i++) {
+        for (int j = 0; j < lines; j++) {
+            printf("%4d", matrix [j] [i]);
+        }
+        printf("\n");
+    }
+
+
+}
+
+void mOpposite(int lines, int columns, int matrix [] [columns])
+{
+
+    int i, j;
+
+    for(i = 0; i < lines; i++){
+        for(j = 0; j < columns; j++){
+
+            printf("%4d", matrix [i] [j] - 2 * matrix [i] [j]);
+
+        }
+        printf("\n");
+    }
+
+}
+
+void mInverse(int lines, int columns, int matrix [] [columns])
+{
+
+        int i, j;
+
+}
+
+void mRealNumber(int lines, int columns, int matrix [] [columns])
+{
+
+    int i, j;
+    float realNumber;
+
+    printf("Digite um número real:\n");
+    scanf("%f", &realNumber);
+
+    for(i = 0; i < lines; i++){
+        for(j = 0; j < columns; j++){
+
+            printf("  %.2f  ", matrix [i] [j] * realNumber);
+
+        }
+        printf("\n");
+    }
+
+}
+
+void mAddition(int lines, int columns, int matrixA [] [columns])
+{
+
+    int matrixB = mValues( 2, 1, 1);
+    int i, j;
+
+    for(i = 0; i < lines; i++){
+        for(j = 0; j < columns; j++){
+
+                printf("%4d",matrixA [i] [j] + matrixB);
+                matrixB++;
+
+        }
+            printf("\n");
+    }
+
+}
+
+void mSubtraction(int lines, int columns, int matrixA [] [columns])
+{
+
+
+
+}
+
+void mMultiplication(int lines, int columns, int matrixA [] [columns])
+{
+
+
+
+}
+
 //Matrix type and its values
-void mValues(int *option1, int *option2)
+int mValues(int op1, int op2, int counter)
 {
 
     //Declaration of variables
@@ -73,21 +163,51 @@ void mValues(int *option1, int *option2)
 
     printf("\n");
 
-    //Call function chosen
-    if(option1 != NULL && option2 != NULL){
-
-        i = option1;
-        j = option2;
-
-        switch(i){
+        switch(op1){
 
             case 1:
 
-                switch(j){
+                switch(op2){
 
                     case 1:
 
-                        mTransposed(matrix , lines, columns);
+                        mTransposed(lines, columns, matrix);
+
+                    break;
+
+                    case 2:
+
+                        mOpposite(lines, columns, matrix);
+
+                    break;
+
+                    case 3:
+
+                        mInverse(lines, columns, matrix);
+
+                    break;
+
+                    case 4:
+
+                        mRealNumber(lines, columns, matrix);
+
+                    break;
+
+                    case 5:
+
+
+
+                    break;
+
+                    case 6:
+
+
+
+                    break;
+
+                    case 7:
+
+
 
                     break;
 
@@ -97,7 +217,35 @@ void mValues(int *option1, int *option2)
 
             case 2:
 
+                switch(op2){
 
+                    case 1:
+
+                        if(counter == 0){
+
+                            mAddition( lines, columns, matrix);
+
+                        }else if(counter == 1){
+
+                            return (matrix);
+
+                        }
+
+                    break;
+
+                    case 2:
+
+
+
+                    break;
+
+                    case 3:
+
+
+
+                    break;
+
+                }
 
             break;
 
@@ -107,19 +255,13 @@ void mValues(int *option1, int *option2)
 
         }
 
-    }else{
-
-    printf("\n\nERROR: UNALLOCATED VARIABLE\n\n");
-
-    }
-
 }
 
 void main()
 {
 
     //Declaration of variables
-    int op1, op2;
+    int op1, op2, matrixA, matrixB;
     char end; //op: option
     printf("\n***CALCULOS DE MATRIZES*** \n \n");
 
@@ -141,45 +283,45 @@ void main()
 
                     case 1:
 
-                        mValues(op1, op2);
+                        mValues(op1, op2, 0);
 
                     break;
 
-                   /* case 2:
+                   case 2:
 
-                        mValues();
+                        mValues(op1, op2, 0);
 
                     break;
 
                     case 3:
 
-                        mValues();
+                        mValues(op1, op2, 0);
 
                     break;
 
                     case 4:
 
-                        mValues();
+                        mValues(op1, op2, 0);
 
                     break;
 
                     case 5:
 
-                        mValues();
+                        mValues(op1, op2, 0);
 
                     break;
 
                     case 6:
 
-                        mValues();
+                        mValues(op1, op2, 0);
 
                     break;
 
                     case 7:
 
-                        mValues();
+                        mValues(op1, op2, 0);
 
-                    break;*/
+                    break;
 
                     default:
                         printf("Opçao invalida.\n");
@@ -188,7 +330,7 @@ void main()
 
             break;
 
-            /*case 2:
+            case 2:
 
                 printf("Digite:\n1 - Adiçao de Matrizes\n2 - Subtraçao de Matrizes\n3 - Multiplicaçao de Matrizes\n");
                 scanf("%d", &op2);
@@ -197,19 +339,19 @@ void main()
 
                     case 1:
 
-                        mValues();
+                        mValues(op1, op2, 0);
 
                     break;
 
                     case 2:
 
-                        mValues();
+                        mValues(op1, op2, 0);
 
                     break;
 
                     case 3:
 
-                        mValues();
+                        mValues(op1, op2, 0);
 
                     break;
 
@@ -218,37 +360,16 @@ void main()
 
                 }
 
-            break;*/
+            break;
 
             default:
                 printf("Opçao invalida.\n");
 
         }
 
-        printf("\nDigite 1 para continuar ou digite qualquer outro numero para sair: \n");
+        printf("\nDigite 1 para sair ou digite qualquer outro numero para continuar: \n");
         scanf("%d", &end);
 
-    }while (end == 1);
-
-}
-
-void mTransposed(int *A, int *m, int *n) // A = matrix, m = lines, n = columns
-{
-
-    int i, j;
-
-    for(i = 0; i < m; i++){
-
-        A += i;
-
-        for(j = 0; j < n; j++){
-
-                A += j;
-
-                printf("%4d", *A );
-
-        }
-            printf("\n");
-    }
+    }while (end != 1);
 
 }
